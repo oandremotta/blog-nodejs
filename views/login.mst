@@ -1,3 +1,15 @@
-<h1>Login</h1>
-
-<p>Usuario Logado: {{userInfo.name}}</p>
+{{> header}}
+<h2>Faça login</h2>
+<form method="POST">
+    <label>
+    E-mail:
+    <input type="email" name="email">
+  </label>
+    <br>
+    <label>
+    Senha:
+    <input type="password" name="password">
+  </label>
+  <br>
+    <input type="submit" value="Logar">
+</form>
