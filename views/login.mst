@@ -13,3 +13,5 @@
   <br>
     <input type="submit" value="Logar">
 </form>
+
+<a href="/users/forget">Esqueci minha senha</a>

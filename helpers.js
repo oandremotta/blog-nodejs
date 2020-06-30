@@ -1,7 +1,8 @@
 exports.defaultPageTitle = "Site Legal";
 exports.menu = [
-  { name: "Home", slug: "/" },
-  { name: "Login", slug: "/users/login" },
-  { name: "Registro", slug: "/users/register" },
-  { name: "Adicionar post", slug: "/post/add" },
+  { name: "Home", slug: "/", guest: true, logged: true },
+  { name: "Login", slug: "/users/login", guest: true, logged: false },
+  { name: "Registro", slug: "/users/register", guest: true, logged: false },
+  { name: "Adicionar post", slug: "/post/add", guest: false, logged: true },
+  { name: "Sair", slug: "/users/logout", guest: false, logged: true },
 ];
