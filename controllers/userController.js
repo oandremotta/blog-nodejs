@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const crypto = require("crypto");
-
+const mailHandler = require("../handlers/mailHandler");
 exports.userMiddleware = (req, res, next) => {
   let info = { name: "André", id: 123 };
   req.userInfo = info;
@@ -92,6 +92,15 @@ exports.forgetAction = async (req, res) => {
   //3. Gerar link para trocar a senha
   const resetLink = `http://localhost:7777/users/reset/${user.resetPasswordToken}`;
   //4. Enviar o link via e-mail para o usuário
+  const html = `Testando e-mail com link:<br> <a href="${resetLink}">Resetar sua senha</a>`;
+  const text = `Testando e-mail com link: ${resetLink}`;
+  const to = `${user.name} <${user.email}>`;
+  mailHandler.send({
+    to,
+    subject: "Resetar sua senha",
+    html: html,
+    text: text,
+  });
   req.flash("success", "Te enviamos um e-mail com as instruções. " + resetLink);
   //5. Usuário vai acessar o link e trocar a senha
   res.redirect("/users/login");
